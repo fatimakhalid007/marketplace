@@ -4,10 +4,22 @@
       <%= link_to "Market Place", '#', id: "logo" %>
       <nav>         
         <ul class="nav pull-right">
-        <ul><li><%= link_to "Home",   '#' %></li></ul>
-        <ul> <li><%= link_to "Sign in", "" %></li></ul>
-        <ul> <li><%= link_to "Sign Up", "" %></li></ul>
+        
+        <ul><li><%= link_to "Home",   root_path %></li></ul>
+        <li><%if logged_in?%></li>
+        <li class="nav pull-left"><%= current_user.name %></li>
+        <ul> <li><%= link_to "Sign Out", signout_path%></li></ul>
+        <ul> <li><%= link_to "Profile Update", edit_user_path(current_user)%></li></ul>
+        <ul> <li><%= link_to "Profile", user_path(current_user)%></li></ul>
+
+        <%else%>
+        <ul> <li><%= link_to "Sign Up", signup_path %></li></ul>
+
+        <ul> <li><%= link_to "Sign in", signin_path%></li></ul>
+
+        <%end%>
         </ul>
+
 
        </nav> 
     </div>
