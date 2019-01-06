@@ -1,0 +1,15 @@
+<% provide(:title, 'Item Detail') %>
+
+<h1>Item Detail</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+     <%= form_for(@item, html:{multipart:true}) do |f| %>
+     <%= render 'itemshow', f: f %>
+     <%if logged_in?%>
+     <ul> <li><%= link_to "Update Item", edit_item_path(@item)%></li></ul>
+    <ul> <li><%= link_to "Delete Item", @item, method: :delete, data: { confirm: "You sure?" }%></li>  </ul>
+     <%end%>
+    <% end %>
+  </div>
+</div>

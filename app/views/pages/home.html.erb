@@ -1,13 +1,14 @@
 <div class="center hero-unit">
-    <h1>MarketPlace</h1>
-    <p>
-      This is the home page for the
-  
-    <%= render 'shared/view'%>
-    <%if logged_in?%>
-    <%current_user.name%>
-    <%end%>
+  <div class="row">
 
-    </p>
-    
+      <h1>MarketPlace</h1>
+      <p>
+        This is the home page for the
+      
+      <%= render 'shared/view'%>
+
+      <%if logged_in?%>
+      <%current_user.name%>
+      <%end%>
+  </div>  
 </div>

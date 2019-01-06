@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+  	<div class="col-sm-3 col-md-4 col-lg-4"style="padding-top: 170px" >
+      
+      <%= render 'items/category' %>
+    </div>
+ 		<div class="col-sm-9 col-md-8 col-lg-8" style="padding-left: 80px" >
+		  <% provide(:title, 'All Items') %>
+			<h1 style="padding-top: 50px;padding-right: 430px">Title(Order By Title)</h1>
+
+		<%= will_paginate%></br></br>
+ 		<!-- @items.paginate(page: params[:page], :per_page=>1 ) -->
+
+<!-- 						<ul class="items">
+ -->  <% @items.each do |item| %>
+    
+    		<%=image_tag item.image.url(:thumb) %><br>
+    		<%= link_to item.name, item_path(item) %><br>
+    		<%=link_to item.price,item, :disabled=>true %><br>
+    		<%= link_to item.category, item %><br>
+				<br>
+				<br>
+
+  	  <% end %>
+<!-- 					</ul>
+ --></br></br>
+		<%= will_paginate%>
+
+		</div> 
+		<!--	</div> -->
+		<!-- </div> -->   
+		
+  </div>
+<!-- s -->
+</div>

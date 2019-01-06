@@ -1,0 +1,27 @@
+	<%= render 'shared/error_messages' , object: f.object%>
+
+	<%=image_tag @item.image.url(:thumb) %><br>
+			
+	<%= f.label :name %>
+	<%= f.text_field :name ,:readonly=>true%><br>
+				 
+	
+
+
+	<%= f.label :price %>
+	<%= f.text_field :price ,:readonly=>true%><br>
+
+	<%= f.label :status%>
+	<%= f.text_field :status ,:readonly=>true%><br>
+
+	<%= f.label :specification %>
+	<%= f.text_field :specification ,:readonly=>true%><br>
+
+	<%= f.label :description %>
+	<%= f.text_field :description ,:readonly=>true%><br>
+
+	<%= f.label :Location %>
+	<%= f.text_field :Location ,:readonly=>true%><br>
+
+  <%= f.label :category %><br />
+  <%=f.text_field :category,:readonly=>true  %>

@@ -1,0 +1,13 @@
+<% provide(:title, 'Updaate Item ') %>
+<h1>Update Item</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+     <%= form_for(@item, html:{multipart:true}) do |f| %>
+     <%= render 'itemUpdate', f: f %>
+
+     <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+	<%= render 'shared/error_messages' , object: f.object%>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %><br>
+				 
+	<%= f.label :image %>
+	<%= f.file_field :image %>
+
+
+	<%= f.label :price %>
+	<%= f.text_field :price%><br>
+
+	<%= f.label :status%><p>Available/sold<p>
+	<%= f.text_field :status%><br>
+
+	<%= f.label :specification %>
+	<%= f.text_field :specification %><br>
+
+	<%= f.label :description %>
+	<%= f.text_field :description%><br>
+
+	<%= f.label :Location %>
+	<%= f.text_field :Location%><br>
+
+  <%= f.label :category %><br />
+  <%= f.select(:category,options_for_select([['electronics'],['vehicles'],['mobiles']])) %>

@@ -11,11 +11,13 @@
         <ul> <li><%= link_to "Sign Out", signout_path%></li></ul>
         <ul> <li><%= link_to "Profile Update", edit_user_path(current_user)%></li></ul>
         <ul> <li><%= link_to "Profile", user_path(current_user)%></li></ul>
-
+        <ul> <li><%= link_to "Add Items", new_item_path%></li></ul>
+        <ul> <li><%= link_to "Items path", items_path%></li></ul>
         <%else%>
         <ul> <li><%= link_to "Sign Up", signup_path %></li></ul>
 
         <ul> <li><%= link_to "Sign in", signin_path%></li></ul>
+
 
         <%end%>
         </ul>
