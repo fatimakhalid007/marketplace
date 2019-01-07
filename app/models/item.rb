@@ -1,4 +1,8 @@
 class Item < ApplicationRecord
+	  has_many :user_item, dependent: :destroy
+    has_many :user  ,through: :user_item
+
+
 	validates :name, presence: true
 	
 	validates :price, presence: true

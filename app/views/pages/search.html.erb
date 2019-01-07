@@ -1,0 +1,6 @@
+
+<h3 style="padding-top: 180px">Search Result</h3>  
+
+    <% @results.each do |result| %>  
+        <%= link_to result.name , item_path(result) %><br>  
+    <% end %>

@@ -18,8 +18,19 @@
     		<%= link_to item.name, item_path(item) %><br>
     		<%=link_to item.price,item, :disabled=>true %><br>
     		<%= link_to item.category, item %><br>
+    		<br>
+ 			  <br>
+ 				<p>Total Likes : <%=UserItem.where(item_id:item.id).count %><p>
 				<br>
-				<br>
+				<% @i=UserItem.where(user_id: current_user.id,item_id:item.id)%>
+				<% if UserItem.exists?(@i).present? %>
+ 				<%= button_to 'unLike', unlike_path(item) %>
+
+ 				<br>
+ 				<%else%>
+ 					<%= button_to 'Like', like_path(item) %>
+ 				<%end%>
+ 			  <br>
 
   	  <% end %>
 <!-- 					</ul>

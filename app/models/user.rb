@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     authenticates_with_sorcery!
+    has_many :user_item, dependent: :destroy
+    has_many :item  ,through: :user_item
 
   # # validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   # # validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -24,4 +26,9 @@ class User < ApplicationRecord
    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
    validates :contact, format:{ with:VALID_CONTACT }
    # validates_attachment :avatar, presence: true
+   def like?(other_user)
+
+   	user_item.find_by(user_id: other_user.id)
+   end
 end
+ 

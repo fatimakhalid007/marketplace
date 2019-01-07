@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     end
 	end
 	def index(category:'non')
-		 # @items=Item.all
+		# @items=Item.all
 		# @items=@items.sort_by{|a| a[:name]}
 		if(category=='non')
 		  @items = Item.paginate(page: params[:page], :per_page => 2)  
@@ -23,8 +23,6 @@ class ItemsController < ApplicationController
 			# @items = Item.paginate(page: params[:page], :per_page => 2)
 
 		end  
-
-
 	end
 	def show
 		@item=Item.find(params[:id])
@@ -69,13 +67,37 @@ class ItemsController < ApplicationController
   	 @item =Item.all.order(:price)
       @items = @item.paginate(page: params[:page], :per_page => 1)
 	end
+	def likes
+		@item=Item.find(params[:id])
+		@user_item=UserItem.new(user_id: current_user.id,item_id:@item.id)
+		if @user_item.save
+			respond_to do |format|
+      format.html { redirect_to items_path }
+      format.js
+    end
+			flash[:success]="Item liked"
+		end
+	end
+	def unlikes
+		@user_item=UserItem.where(user_id: current_user.id , item_id: params[:id])
+		# @user_item=UserItem.new(user_id: current_user.id,item_id:@item.id)
+		i=@user_item.ids
+	  UserItem.destroy(i[0])
+		respond_to do |format|
+    	format.html { redirect_to items_path }
+    	format.js
+			flash[:success]="Item unliked"
+		end
+	end
 	helper_method :electronics
 	helper_method:mobile
 	helper_method:Vehicle
 	helper_method :title
 	helper_method :price
+	helper_method :likes
 	private
 		def item_params
 			params.require(:item).permit(:name,:price,:image,:Location,:description,:specification,:category,:status)
 		end
+
 end
